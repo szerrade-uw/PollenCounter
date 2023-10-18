@@ -180,7 +180,7 @@ if __name__ == "__main__":
           elevation = "0"
         
         elevation = "length_"+elevation
-        if elevation in original_lengths.keys():
+        if elevation in original_lengths.keys() and guess_elevation:
           original_length = float(original_lengths.get(elevation))
         else: 
           original_length = default_length
