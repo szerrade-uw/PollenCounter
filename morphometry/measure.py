@@ -16,6 +16,7 @@ from skimage.transform import rotate
 from collections import Counter
 import configparser
 import argparse
+import re
 
 
 def morphometry(guard_value, pore_value, mask_crop):
@@ -178,13 +179,18 @@ if __name__ == "__main__":
         path = Path(file.name)
         filename = path.stem
         if "_stats" in file.name: continue
-        if "psme" in file.name:
+        """if "psme" in file.name:
           elevation = filename.split("psme-",1)[1]
           elevation = elevation.split("-",1)[0]
         elif "PSME" in file.name:
           elevation = filename.split("PSME_",1)[1]
           elevation = elevation.split("_",1)[0]
         else: 
+          elevation = "-1" """
+        match = re.search(r'([1-9]\d{2,})', file.name)
+        if match:
+          elevation = match.group(0)
+        else:
           elevation = "-1"
         
         elevation = "length_"+elevation
