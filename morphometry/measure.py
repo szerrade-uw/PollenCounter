@@ -287,7 +287,7 @@ if __name__ == "__main__":
 
               # Rotate the mask and save
               mask = Image.fromarray(mask_multichannel)
-              mask_aligned = mask.rotate(57.2958 * theta, expand=True, fillcolor=(255,255,255))
+              mask_aligned = mask.rotate(57.2958 * theta, expand=True, fillcolor=(240,240,240))
 
               # Begin counting
               unique, counts = np.unique(mask_crop, return_counts=True)
